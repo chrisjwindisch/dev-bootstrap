@@ -1,0 +1,11 @@
+#!/usr/bin/env expect
+set token [lindex $argv 0];
+set project [lindex $argv 1];
+set projectid [lindex $argv 2];
+spawn firebase projects:create $projectid --token=$token 
+match_max 100000
+expect -re "call your project"
+send -- "$project"
+expect -re "call your project"
+send -- "\r"
+expect eof
