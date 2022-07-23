@@ -50,7 +50,5 @@ gcloud auth login # Triggers a browser login
 FIREBASE_TOKEN=$(firebase login:ci | grep '1//' | cat | sed -r "s/\x1B\[([0-9]{1,3}((;[0-9]{1,3})*)?)?[m|K]//g")
 echo $SCRIPT_PATH/firebase.exp "$FIREBASE_TOKEN" "$GCLOUD_PROJECT_NAME" "$GCLOUD_PROJECT_ID"
 expect $SCRIPT_PATH/firebase.exp "$FIREBASE_TOKEN" "$GCLOUD_PROJECT_NAME" "$GCLOUD_PROJECT_ID"
-#firebase init --token $FIREBASE_TOKEN hosting # Works but goes into interactive mode
-#gcloud projects create $GCLOUD_PROJECT_ID --name=$GCLOUD_PROJECT_NAME
 
 exit 0
